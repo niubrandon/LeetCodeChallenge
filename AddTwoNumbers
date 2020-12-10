@@ -1,0 +1,79 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+
+        //create ListNode A 2,4,3 and B 5,6,4
+        ListNode lastNodeA = new ListNode(3);
+        ListNode midNodeA = new ListNode(2, lastNodeA);
+        ListNode ListNodeA = new ListNode(1, midNodeA);
+
+        ListNode lastNodeB = new ListNode(4);
+        ListNode midNodeB = new ListNode(6, lastNodeB);
+        ListNode ListNodeB = new ListNode(5, midNodeB);
+
+        System.out.println(ListNodeA.val);
+        System.out.println(ListNodeA.next.val);
+        System.out.println(ListNodeA.next.next.val);
+
+        ListNode ListNodeC = new ListNode(0);
+        ListNode resListNode = ListNodeC;
+
+        System.out.println(ListNodeC.val);
+
+        int carry =0;
+
+        while (ListNodeA != null && ListNodeB != null) {
+
+
+
+            System.out.println("listNode A is: " + ListNodeA.val +  " and ListNode B is: " + ListNodeB.val);
+
+
+            ListNodeC.val = ListNodeA.val + ListNodeB.val + carry;
+
+
+            if ((ListNodeC.val ) > 9) {
+              ListNodeC.val =  ListNodeC.val - 10;
+              carry = 1;
+            } else {
+                ListNodeC.val = ListNodeA.val + ListNodeB.val + carry;
+                carry = 0;
+            }
+
+            System.out.println("****ListNode C is: " + ListNodeC.val);
+
+            //stop if it is last one
+            ListNodeC.next = new ListNode(0);
+
+            ListNodeC = ListNodeC.next;
+
+            ListNodeA = ListNodeA.next;
+            ListNodeB = ListNodeB.next;
+
+        }
+        System.out.println(resListNode.val);
+        System.out.println(resListNode.next.val);
+        System.out.println(resListNode.next.next.val);
+        System.out.println(resListNode.next.next.next.val);
+
+    }
+
+
+}
+
+
+
+
+package com.company;
+
+public class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {};
+    ListNode(int val) { this.val = val;}
+    ListNode(int val, ListNode next) {this.val = val; this.next = next;}
+
+}
